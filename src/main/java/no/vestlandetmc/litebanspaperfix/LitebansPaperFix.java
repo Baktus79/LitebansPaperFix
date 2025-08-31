@@ -37,17 +37,17 @@ public final class LitebansPaperFix extends JavaPlugin {
 	}
 
 	private void forceKick(Entry e, boolean fromBan) {
-		final String reason = Optional.ofNullable(e.getReason()).filter(s -> !s.isBlank()).orElse(fromBan ? "Du er bannet!" : "Kicked!");
+		final String reason = Optional.ofNullable(e.getReason()).filter(s -> !s.isBlank()).orElse(fromBan ? "You are banned!" : "Kicked!");
 		final UUID uuid = UUID.fromString(e.getUuid());
 
 		getServer().getScheduler().runTask(this, () -> {
 			final Player target = Bukkit.getPlayer(uuid);
 			final Component reasonAdventure = Component.text(reason).color(NamedTextColor.RED);
-			final Component ban = Component.text("Du ble utestengt fra Vestlandet.").color(NamedTextColor.RED);
+			final Component ban = Component.text("You were banned.").color(NamedTextColor.RED);
 
 			if (target != null && target.isOnline()) {
 				target.kick(ban.appendNewline().append(reasonAdventure));
-				getLogger().info("Force-kick er utført på " + target.getName() + " (" + (fromBan ? "ban" : "kick") + ").");
+				getLogger().info("Force kick is performed on " + target.getName() + " (" + (fromBan ? "ban" : "kick") + ").");
 			}
 		});
 	}
