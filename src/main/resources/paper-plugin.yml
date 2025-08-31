@@ -1,0 +1,12 @@
+name: LitebansPaperFix
+version: '${version}'
+main: no.vestlandetmc.litebanspaperfix.LitebansPaperFix
+api-version: '1.21'
+authors: [ Baktus_79 ]
+description: Tvinger kick på Paper main thread når LiteBans misdetekterer Folia.
+website: https://www.vestlandetmc.no
+dependencies:
+  server:
+    LiteBans:
+      load: BEFORE
+      required: true
